@@ -9,7 +9,7 @@ let xPos, yPos; //declaration
 function setup() {
   createCanvas(400, 300);
   xPos = [width*0.05, height*0.95, width*0.05, height*0.05,];
-  yPos = [width*0.95, height*0.05, width*0.05, height*0.05,];
+  yPos = [width*0.05, height*0.05, width*0.95, height*0.95,];
 }
 
 function draw() {
@@ -17,11 +17,11 @@ function draw() {
   cornersAndMouseLoop();
 }
 
-function mousePressed()[
+function mousePressed(){
   //automatically called
-  xPos.push(mouseX);
-  yPos.push(mouseY);
-]
+    xPos.push(mouseX);
+    yPos.push(mouseY);
+}
 
 function cornersAndMouseLoop(){
   let i = 0
