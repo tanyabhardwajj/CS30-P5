@@ -8,13 +8,11 @@ let xPos, yPos; //declaration
 
 function setup() {
   createCanvas(400, 300);
-  xPos = [width*0.05, height*0.95, width*0.05, height*0.05,];
-  yPos = [width*0.05, height*0.05, width*0.95, height*0.95,];
-}
-
-function draw() {
-  background(220);
-  cornersAndMouseLoop();
+  xPos = []; yPos = [];
+  // xPos = [width*0.05, width*0.95, width*0.05, width*0.95,];
+  // yPos = [height*0.05, height*0.05, height*0.95, height*0.95,];
+  //initWithLoops();
+  squareAndCircle();
 }
 
 function mousePressed(){
@@ -22,6 +20,36 @@ function mousePressed(){
     xPos.push(mouseX);
     yPos.push(mouseY);
 }
+
+// function initWithLoops(){
+//   //lay down some initial circles but using loops to do so
+//   for(let x = 10; x < width; x+=20){
+//     xPos.push(x);
+//     yPos.push(height/2);
+//   }
+// }
+
+function squareAndCircle(){
+  for(let x = 15; x < width; x+=30){
+    xPos.push(x);
+    yPos.push(0);
+  }
+  for(let x = 15; x < width; x+=30){
+    xPos.push(0);
+    yPos.push(height - x);
+  }
+  for(let x = 15; x < width; x+=30){
+    xPos.push(x + width);
+    yPos.push(0);
+}
+}
+
+function draw(){
+  background(220);
+  cornersAndMouseLoop();
+  
+}
+
 
 function cornersAndMouseLoop(){
   let i = 0
