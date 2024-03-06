@@ -5,11 +5,14 @@
 
 
 function setup() {
+  document.addEventListener("contextmenu", event => event.preventDefault())
   createCanvas(500, 500);
   grid();
 }
 
-function draw() {}
+function draw() {
+
+}
 
 function grid(){
   let x = 0;
