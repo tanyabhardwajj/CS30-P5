@@ -11,7 +11,6 @@ function setup() {
 }
 
 function draw() {
-
 }
 
 function grid(){
@@ -27,3 +26,9 @@ function grid(){
   }
 }
 
+function mousePressed(){
+  if(mouseButton = RIGHT){
+    x = x*5;
+    y = y*5;
+  }
+}
