@@ -15,7 +15,7 @@ function setup() {
 
 function segmentLine(){
   //using loop, draw one line made up of many lines
-  strokeWeight(15);
+  strokeWeight(20);
   let greyTime = 0;
   let x = 0;
   while (x<width){

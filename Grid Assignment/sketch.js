@@ -23,12 +23,7 @@ function grid(){
       square(x, y, 25);
       y = y + 25;
     }
+    
   }
 }
 
-function mousePressed(){
-  if(mouseButton = RIGHT){
-    x = x*5;
-    y = y*5;
-  }
-}
