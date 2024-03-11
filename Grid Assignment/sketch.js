@@ -57,4 +57,4 @@ function keyPressed() {
   //is pressed
   if (key !== ' ') return;
   grid();
-}
+} 
