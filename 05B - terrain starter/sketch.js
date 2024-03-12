@@ -27,8 +27,6 @@ function drawRectangles(){
 
     //option 2 - random()
     rectHeight = random(0, height*0.8);
-
-    //option 3 - 
     rect(x, height/2, rectWidth, rectHeight);
   }
 }
