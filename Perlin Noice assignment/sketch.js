@@ -6,28 +6,41 @@
 //Global Variable
 let rectWidth = 2;
 let rectHeight;
+let tallest = 0;
+let tallest2 = 0;
 
 function setup() {
   document.addEventListener("contextmenu", event => event.preventDefault())
   createCanvas(windowWidth, windowHeight);
-  rectMode(CORNERS);
+  rectMode(CORNERS); 
+}
+
+
+function tallestY(){
+  if(rectHeight > tallest){
+    tallest = rectHeight;
+    }
+}
+
+function tallestX(){
+  if(rectHeight > tallest){
+    tallest2 = x * rectWidth;
+  }
 }
 
 function terrain(){
   let time = 0;
-  let x = 0;    
-  let tallest = 0;
-  let xTallest = 0;
+  let x = 0;
+ 
   while(x < width){
     rectHeight = noise(time);
     rectHeight = map(rectHeight, 0, 1, 0, height*0.90);
-    if(rectHeight > tallest){
-      tallest = rectHeight;
-      }
     time += 0.005;
-    fill(0);
+    fill(255,233,0);
     rect(x, height , x + rectWidth, height - rectHeight);
     x += rectWidth;
+    tallestY();
+    tallestX();
   }
 }
 
@@ -51,5 +64,7 @@ function highestPoint(){
 
 function draw() {
   background(220);
+  tallestY();
+  tallestX();
   terrain();
 }
