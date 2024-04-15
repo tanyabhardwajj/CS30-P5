@@ -27,9 +27,9 @@ function mouseClicked(){
 
 function keyPressed(){
   if(keyCode !== SHIFT){
-    myPlanet.x = mouseX;
-    myPlanet.y = mouseY;
-    myPlanet.relocate(mouseX, mouseY);
+    // myPlanet.x = mouseX;
+    // myPlanet.y = mouseY;
+   // myPlanet.relocate(mouseX, mouseY);
   }
 }
 
