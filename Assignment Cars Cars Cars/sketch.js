@@ -24,26 +24,47 @@ function drawRoad(){
   }
 }
 
-function truck(){
-  let truckBody;
-  truckBody = rect(width/2, height/2, 80, 50);
-  line();
-}
 
-function car(){
-  //car
-  rect(width/2, height/2, )
-}
 
 class Vehicle{
   constructor(x, y){
     this.x = x;
     this. y = y;
-    this.xspeed = 5;
+    this.type = type;
     this.c = color(random(255), random(255), random(255));
+    this.direction = direction;
+    this.xSpeed = random(1, 5)*this.direction
   }
 
   display(){
-   this.x += this.xspeed 
+    fill(this.c);
+    if (this.type === 0){
+      rect(this.x, this.y, 50, 30);
+    }
+    else if(this.type === 1){
+      rect(this.x, this.c, 70, 40)
+    }
+  }
+
+  move(){
+    this.x += this.xSpeed;
+  if(this.x > width && this.direction === 1){
+    this.x = -50;
+  }
+  else if(this.x < -50 && this.direction === -1){
+    this.x = width;
+  }
+  }
+
+  speedUp(){
+    if(this.xSpeed < 15 && this.xSpeed > -15){
+      this.xSpeed += this.dorection*0.5;
+    }
+  }
+
+  speedDown(){
+    if(this.xSpeed > 0.5 || this.xSpeed < -0.5){
+      this.xSpeed -= this.direction*0.5;
+    }
   }
 }
