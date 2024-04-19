@@ -16,17 +16,16 @@ function setup() {
 }
 
 
-function tallestY(){
-  if(rectHeight > tallest){
-    tallest = rectHeight;
-    }
+
+function drawFlag(x,y){
+  let longSquare = 50;
+  let square = 20;
+  fill(0);
+  rect(x, y - longSquare, x + 5, y);
+  rect(x, y - longSquare - square, x + square, y - longSquare);
 }
 
-function tallestX(){
-  if(rectHeight > tallest){
-    tallest2 = x * rectWidth;
-  }
-}
+
 
 function terrain(){
   let time = 0;
@@ -39,8 +38,14 @@ function terrain(){
     fill(255,233,0);
     rect(x, height , x + rectWidth, height - rectHeight);
     x += rectWidth;
-    tallestY();
-    tallestX();
+    if (rectHeight > tallest){
+      tallest = rectHeight;
+      tallest2 = x - rectWidth;
+    }
+    if (rectWidth > tallest2){
+      tallest2 = x;
+    }
+    drawFlag(tallest2, height - tallest);
   }
 }
 
@@ -64,7 +69,5 @@ function highestPoint(){
 
 function draw() {
   background(220);
-  tallestY();
-  tallestX();
   terrain();
 }
