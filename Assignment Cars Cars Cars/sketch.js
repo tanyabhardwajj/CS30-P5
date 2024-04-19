@@ -1,7 +1,7 @@
 // Cars Cars Cars
 // Tanya Bhardwaj
 // 12 April, 2024
-// 
+// using classes and arrays to portray 2 lanes of cars moving like in real life.
 
 //Global Variables
 let eastbound = [];//left to right
@@ -81,12 +81,15 @@ class Vehicle{
     if(this.xSpeed < 15 && this.xSpeed > -15){
       this.xSpeed += this.direction*0.5;
     }
+    console.log("up", frameCount);
+
   }
 
   speedDown(){
-    if(this.xSpeed > 2 && this.xSpeed < -2){
-      this.xSpeed -= this.direction*0.5;
+    if(this.xSpeed > 0.5 && this.xSpeed < -0.5){
+      this.xSpeed += this.direction*0.5;
     }
+    print("down", frameCount);
   }
 
   changeColor(){
