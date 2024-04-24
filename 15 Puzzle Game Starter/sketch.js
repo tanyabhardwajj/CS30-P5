@@ -28,8 +28,22 @@ function draw() {
   drawGrid();
 }
 
+// function mouseClicked(){
+//   if(keyIsDown(SHIFT) && mouseClicked){
+//     flip(col, row);
+//   }
+// }
+
 function mousePressed(){
-  flip(col, row);
+  if((keyIsDown(SHIFT) && mouseIsPressed)){
+    flip(col, row)
+  }
+  //only do something is mouseX and mouseY are on the Canvas
+  //always flip the current tile
+  //flip(col, row);
+
+  //depends a bit on position - flip four neighbors
+  if(row < NUM_ROWS - 1) flip(col, row+1);//Right
 }
 
 function flip(x, y){
