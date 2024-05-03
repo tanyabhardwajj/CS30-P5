@@ -6,16 +6,44 @@
 //Global Variable
 let rectWidth = 2;
 let rectHeight;
-let tallest = 0;
-let tallest2 = 0;
+let randomHeight;
+let highestY = 0;
+let highestX = 0;
+let x = 0;
+let scrollSpeed = 0;
+let totalrectHeight = 0;
+let rectNumber = 0;
+let averageHeight = 0;
 
 function setup() {
-  document.addEventListener("contextmenu", event => event.preventDefault())
   createCanvas(windowWidth, windowHeight);
-  rectMode(CORNERS); 
+  rectMode(CORNERS);
 }
 
-
+let time = 0;
+function terrain(){
+  while(x < width){
+    scrollSpeed += 0.0002;
+    randomHeight = noise(time+scrollSpeed);
+    randomHeight = map(randomHeight, 0, 1, 0, height * 0.8);
+    time += 0.03;
+    fill(0);
+    noStroke();
+    rectHeight = height - randomHeight;
+    rect(x, height, x + rectWidth, rectHeight);
+    x += rectWidth;
+    if(randomHeight > highestY){
+      highestY = randomHeight;
+      highestX = x - rectWidth;
+    }
+    if(rectWidth > highestX){
+      highestX = x;
+    }
+    totalrectHeight += rectHeight;
+    rectNumber += 1;
+  }
+  drawFlag(highestX, height - highestY);
+}
 
 function drawFlag(x,y){
   let longSquare = 50;
@@ -25,49 +53,28 @@ function drawFlag(x,y){
   rect(x, y - longSquare - square, x + square, y - longSquare);
 }
 
-
-
-function terrain(){
-  let time = 0;
-  let x = 0;
- 
-  while(x < width){
-    rectHeight = noise(time);
-    rectHeight = map(rectHeight, 0, 1, 0, height*0.90);
-    time += 0.005;
-    fill(255,233,0);
-    rect(x, height , x + rectWidth, height - rectHeight);
-    x += rectWidth;
-    if (rectHeight > tallest){
-      tallest = rectHeight;
-      tallest2 = x - rectWidth;
-    }
-    if (rectWidth > tallest2){
-      tallest2 = x;
-    }
-    drawFlag(tallest2, height - tallest);
-  }
-}
-
-// do a rectWidth if statement for letting the program not crash
-function keyPressed(){
-  if(keyCode === RIGHT_ARROW){
-    if(rectWidth <= 3.5){
-    rectWidth = rectWidth + 0.5;
-    }
-  }
-  else if(keyCode === LEFT_ARROW){
-    if(rectWidth >= 1){
-    rectWidth = rectWidth - 0.5;
-    }
-  }
-}
-
-function highestPoint(){
-
+function averageLine(){
+  averageHeight = totalrectHeight / rectNumber;
+  stroke(255, 0, 0);
+  strokeWeight(5);
+  rect(0, averageHeight, width, averageHeight);
 }
 
 function draw() {
   background(220);
   terrain();
+  averageLine();
+}
+
+function keyPressed(){
+  if (keyCode === RIGHT_ARROW){
+    if(rectWidth <= 3.5){
+      rectWidth = rectWidth + 0.5;
+    }
+  }
+  else if(keyCode === LEFT_ARROW){
+    if(rectWidth >= 1){
+      rectWidth = rectWidth - 0.5;
+    }
+  }
 }
